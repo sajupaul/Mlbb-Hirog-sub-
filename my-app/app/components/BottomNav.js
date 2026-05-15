@@ -39,9 +39,7 @@ export default function BottomNav() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex flex-col items-center justify-center gap-0.5 w-16 py-1 rounded-xl transition-all duration-200 ${
-                isHome ? 'relative -mt-5' : ''
-              } ${
+              className={`relative flex flex-col items-center justify-end w-16 h-full pb-1.5 transition-all duration-200 ${
                 isActive && !isHome
                   ? 'text-purple-400'
                   : !isHome
@@ -51,7 +49,7 @@ export default function BottomNav() {
             >
               {isHome ? (
                 <div
-                  className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg transition-all ${
+                  className={`absolute -top-5 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all ${
                     isActive
                       ? 'bg-gradient-to-br from-purple-500 to-fuchsia-600 text-white shadow-purple-500/40'
                       : 'bg-[#1a1a3a] text-slate-400 border border-purple-500/20 hover:border-purple-500/40'
@@ -60,9 +58,11 @@ export default function BottomNav() {
                   {tab.icon}
                 </div>
               ) : (
-                tab.icon
+                <div className="mb-1">
+                  {tab.icon}
+                </div>
               )}
-              <span className={`text-[10px] font-medium ${isHome && isActive ? 'text-purple-400' : isHome ? 'text-slate-500' : ''}`}>
+              <span className={`text-[10px] font-medium leading-none ${isHome && isActive ? 'text-purple-400' : isHome ? 'text-slate-500' : ''}`}>
                 {tab.label}
               </span>
             </Link>
